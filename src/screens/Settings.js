@@ -24,7 +24,7 @@ export default function Settings() {
         style={styles.Pressable_container}
         onPress={() => dispatch(setBackgroundColor('yellow'))}
       >
-        <Text>Yellowwwsszsdssss</Text>
+        <Text>Yellow</Text>
       </Pressable>
       <Pressable
         style={styles.Pressable_container}
