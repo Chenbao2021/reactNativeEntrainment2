@@ -25,6 +25,8 @@ const iconSmall = 0.02 * WIDTH;
 const section = StyleSheet.create({
   commandeSection: {
     flex: 1,
+    backgroundColor: 'black',
+
   },
   titre: {
     flexDirection: 'row',
@@ -280,7 +282,7 @@ const styles = StyleSheet.create({
     fontSize: 0.02 * WIDTH,
   },
   commande: {
-    flex: 1,
+    // flex: 1,
     width: 230,
     minHeight: 250,
     maxHeight: 600,
