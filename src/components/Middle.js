@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 import Icon from 'react-native-ionicons';
 import type { Node } from 'react';
+import { setInterval } from 'react-native/Libraries/Core/Timers/JSTimers';
 
 import dayjs, { Dayjs } from 'dayjs';
 
@@ -20,19 +21,8 @@ import { addOrderHistory, setPlatNotFinished, deleteOrderStory } from '../redux/
 import type { OrderType, CommandeType } from '../flowType/flowTypeObject'
 
 import Total from '../screens/Total';
-import {setInterval} from "react-native/Libraries/Core/Timers/JSTimers";
 
 const iconSmall = 0.02 * WIDTH;
-
-const section = StyleSheet.create({
-  commandeSection: {
-    // flex: 1,
-    backgroundColor: 'yellow',
-  },
-  commandeSection2: {
-    flex: 1,
-  },
-})
 
 type PropsProduit = {
   id: number,
@@ -53,7 +43,7 @@ function Product(props: PropsProduit) {
 
   return (
     <Pressable
-      style={[{ borderWidth: 1, borderColor: 'black', padding: 2, margin: 10, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: props.finished ? 'grey' : 'white' }]}
+      style={[{ borderWidth: 1, borderColor: 'black', padding: 5, margin: 10, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: props.finished ? 'grey' : 'white' }]}
       onPress={() => { checkfinished() }}
     >
       <Text
@@ -73,11 +63,8 @@ function Product(props: PropsProduit) {
 function CommandeSection(props:CommandeType) {
   const { form } = useSelector((state) => state.SettingReducer)
   return (
-    <View style={{ flex: form === 2 ? 1 : (form === 1 ? 1 : undefined), backgroundColor: 'white' }}>
-      {/* <View style={section.titre}>
-        <Icon name={props.iconName} style={{ marginRight: 8 }} />
-        <Text>{props.titre}</Text>
-      </View> */}
+    // <View style={{ flex: form === 2 ? 1 : (form === 1 ? 1 : undefined), backgroundColor: 'white' }}>
+    <View style={{ flex: (form === 2 || form === 1) ? 1 : undefined, backgroundColor: 'white' }}>
       <ScrollView>
         {props.order.plats.map((p, idx) => (
           <Product product={p} id={props.order.id} finished={p.finished} index={idx} order={props.order} key={`${ props.order.id },${ idx}`} />
@@ -88,9 +75,6 @@ function CommandeSection(props:CommandeType) {
 }
 
 function Commande({ data: order }) {
-  // const timeNow = new Date()
-  // // console.log('ecart:'+(timeNow.getTime() - order.timeECMA))
-  // const ecartTime = (timeNow.getTime() - order.timeECMA)
   const dispatch = useDispatch();
   const { form } = useSelector((state) => state.SettingReducer)
   return (
@@ -105,7 +89,7 @@ function Commande({ data: order }) {
               <Text style={styles.font_small}>00:05:35</Text>
             </View>
             <Pressable onPress={() => dispatch(setUrgent({ orderId: order.id }))}>
-              <Icon name="notifications-outline" size={iconSmall * 2} color={ order.urgent ? 'black' : 'white'} />
+              <Icon name="notifications-outline" size={iconSmall * 2} color={order.urgent ? 'black' : 'white'} />
             </Pressable>
           </View>
           <View style={styles.commande_head_bottom}>
@@ -145,10 +129,6 @@ function Commandes() {
       }
     })
     handleScroll();
-    // const time = dayjs(orders[0].time).format('HH:mm');
-    // const time2 = dayjs(new Date()).format('HH:mm');
-    // const time = new Date(orders[0].time);
-    // console.log(time.getTime());
   })
 
   useEffect(() => {
@@ -156,7 +136,6 @@ function Commandes() {
     orders.forEach((order) => {
       let colorStatus = order.colorStatus;
       setInterval(() => {
-        console.log('color Status de '+ order.id+' : ' +colorStatus)
         if (colorStatus < 3) {
           colorStatus += 1;
           const timeOrder = (new Date(order.time)).getTime();
@@ -243,13 +222,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  // commande_head_right: {
-  //   justifyContent: 'center',
-  // },
-  // commande_head_right_top: {
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-between',
-  // },
   commande_head_top_left: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -273,7 +245,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   commande_head: {
-    // flex: 0.15,
     flexDirection: 'row',
     padding: 10,
     borderRadius: 15,
@@ -287,7 +258,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: 230,
     minHeight: 280,
-    // backgroundColor: 'white',
     margin: 0.003 * WIDTH,
     borderRadius: 20,
   },
@@ -324,4 +294,4 @@ const styles = StyleSheet.create({
     flex: 1,
     marginBottom: 0.005 * WIDTH,
   },
-});
+})

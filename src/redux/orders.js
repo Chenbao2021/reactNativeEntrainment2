@@ -109,6 +109,16 @@ export const OrdersSlice = createSlice({
             id: 22, name: 'plat 2', finished: false, pieces: 1,
           }, {
             id: 32, name: 'plat 3', finished: false, pieces: 2,
+          }, {
+            id: 32, name: 'plat 3', finished: false, pieces: 2,
+          }, {
+            id: 32, name: 'plat 3', finished: false, pieces: 2,
+          }, {
+            id: 32, name: 'plat 3', finished: false, pieces: 2,
+          }, {
+            id: 32, name: 'plat 3', finished: false, pieces: 2,
+          }, {
+            id: 32, name: 'plat 3', finished: false, pieces: 2,
           },
         ],
         colorStatus: 1,
@@ -137,6 +147,84 @@ export const OrdersSlice = createSlice({
         plats: [
           {
             id: 1, name: 'plat 1', finished: false, pieces: 4,
+          },
+        ],
+        colorStatus: 1,
+      },
+      {
+        id: 35,
+        time: 'Fri May 20 2022 15:55:22 GMT+0200 (Central European Summer Time)',
+        iconName: 'md-bicycle',
+        mode: 'A livrer',
+        orderfinished: false,
+        urgent: false,
+        plats: [
+          {
+            id: 1, name: 'plat 1', finished: false, pieces: 4,
+          },
+        ],
+        colorStatus: 1,
+      },
+      {
+        id: 35,
+        time: 'Fri May 20 2022 15:55:22 GMT+0200 (Central European Summer Time)',
+        iconName: 'md-bicycle',
+        mode: 'A livrer',
+        orderfinished: false,
+        urgent: false,
+        plats: [
+          {
+            id: 1, name: 'plat 1', finished: false, pieces: 4,
+          },
+        ],
+        colorStatus: 1,
+      },
+      {
+        id: 35,
+        time: 'Fri May 20 2022 15:55:22 GMT+0200 (Central European Summer Time)',
+        iconName: 'md-bicycle',
+        mode: 'A livrer',
+        orderfinished: false,
+        urgent: false,
+        plats: [
+          {
+            id: 1, name: 'plat 1', finished: false, pieces: 4,
+          },
+        ],
+        colorStatus: 1,
+      },
+      {
+        id: 6,
+        time: 'Fri May 20 2022 16:35:22 GMT+0200 (Central European Summer Time)',
+        iconName: 'md-bicycle',
+        mode: 'A livrer',
+        orderfinished: false,
+        urgent: false,
+        plats: [
+          {
+            id: 1, name: 'plat 1', finished: false, pieces: 4,
+          }, {
+            id: 2, name: 'plat 2', finished: false, pieces: 1,
+          }, {
+            id: 3, name: 'plat 3', finished: false, pieces: 2,
+          },
+        ],
+        colorStatus: 1,
+      },
+      {
+        id: 6,
+        time: 'Fri May 20 2022 16:35:22 GMT+0200 (Central European Summer Time)',
+        iconName: 'md-bicycle',
+        mode: 'A livrer',
+        orderfinished: false,
+        urgent: false,
+        plats: [
+          {
+            id: 1, name: 'plat 1', finished: false, pieces: 4,
+          }, {
+            id: 2, name: 'plat 2', finished: false, pieces: 1,
+          }, {
+            id: 3, name: 'plat 3', finished: false, pieces: 2,
           },
         ],
         colorStatus: 1,
