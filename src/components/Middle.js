@@ -6,6 +6,7 @@ import Icon from 'react-native-ionicons';
 import type { Node } from 'react';
 
 import dayjs, { Dayjs } from 'dayjs';
+
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -24,16 +25,11 @@ const iconSmall = 0.02 * WIDTH;
 
 const section = StyleSheet.create({
   commandeSection: {
-    flex: 1,
-    backgroundColor: 'black',
-
+    // flex: 1,
+    backgroundColor: 'yellow',
   },
-  titre: {
-    flexDirection: 'row',
-    backgroundColor: 'grey',
-    alignItems: 'center',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+  commandeSection2: {
+    flex: 1,
   },
 })
 
@@ -56,7 +52,7 @@ function Product(props: PropsProduit) {
 
   return (
     <Pressable
-      style={[{ padding: 5, margin: 15, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: props.finished ? 'grey' : 'white' }]}
+      style={[{ borderWidth: 1, borderColor: 'black', padding: 2, margin: 10, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: props.finished ? 'grey' : 'white' }]}
       onPress={() => { checkfinished() }}
     >
       <Text
@@ -74,8 +70,9 @@ function Product(props: PropsProduit) {
 }
 
 function CommandeSection(props:CommandeType) {
+  const { form } = useSelector((state) => state.SettingReducer)
   return (
-    <View style={section.commandeSection}>
+    <View style={{ flex: form === 2 ? 1 : (form === 1 ? 1 : undefined), backgroundColor: 'white' }}>
       {/* <View style={section.titre}>
         <Icon name={props.iconName} style={{ marginRight: 8 }} />
         <Text>{props.titre}</Text>
@@ -94,8 +91,9 @@ function Commande({ data: order }) {
   // // console.log('ecart:'+(timeNow.getTime() - order.timeECMA))
   // const ecartTime = (timeNow.getTime() - order.timeECMA)
   const dispatch = useDispatch();
+  const { form } = useSelector((state) => state.SettingReducer)
   return (
-    <View style={styles.commande}>
+    <View style={[{ backgroundColor: form === 3 ? '#2f4f4f' : 'white', }, form === 4 ? styles.commandeForme4 : styles.commande]}>
       <View style={[{ backgroundColor: order.colorStatus === 3 ? 'red' : (order.colorStatus === 2 ? 'orange' : 'green') }, styles.commande_head]}>
         <View style={styles.commande_head_container}>
           <View style={styles.commande_head_top}>
@@ -165,13 +163,14 @@ function Commandes() {
           if (ecart > 1200000) { dispatch(setColorStatus({ orderId: order.id, updateColor: 3 })) }
           else if (ecart > 600000) { dispatch(setColorStatus({ orderId: order.id, updateColor: 2 })) }
         }
-      }, 3000)
+      }, 100000)
     })
   }, [])
   const takeForm = () => {
     if (form === 1) return styles.commandes1;
     else if (form === 2) return styles.commandes2;
     else if (form === 3) return styles.commandes3;
+    else if (form === 4) return styles.commandes4;
   }
   return (
     <ScrollView onContentSizeChange={(width,) => { 
@@ -273,27 +272,40 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   commande_head: {
-    flex: 0.15,
+    // flex: 0.15,
     flexDirection: 'row',
     padding: 10,
     borderRadius: 15,
+    minHeight: 60,
+    maxHeight: 60,
   },
   commande_head_time: {
     fontSize: 0.02 * WIDTH,
   },
   commande: {
-    // flex: 1,
+    flex: 1,
     width: 230,
-    minHeight: 250,
+    minHeight: 280,
+    // backgroundColor: 'white',
+    margin: 0.003 * WIDTH,
+    borderRadius: 20,
+  },
+  commandeForme4: {
+    width: 230,
+    minHeight: 100,
     maxHeight: 600,
 
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
     margin: 0.003 * WIDTH,
     borderRadius: 20,
   },
   font_small: {
     fontSize: 0.01 * WIDTH,
     color: 'black',
+  },
+  commandes4: {
+    flex: 1,
+    flexWrap: 'wrap',
   },
   commandes2: {
     flex: 1,

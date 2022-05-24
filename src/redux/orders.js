@@ -96,6 +96,48 @@ export const OrdersSlice = createSlice({
           }, {
             id: 3, name: 'plat 3', finished: false, pieces: 2,
           },
+          {
+            id: 11, name: 'plat 1', finished: false, pieces: 4,
+          }, {
+            id: 12, name: 'plat 2', finished: false, pieces: 1,
+          }, {
+            id: 13, name: 'plat 3', finished: false, pieces: 2,
+          },
+          {
+            id: 21, name: 'plat 1', finished: false, pieces: 4,
+          }, {
+            id: 22, name: 'plat 2', finished: false, pieces: 1,
+          }, {
+            id: 32, name: 'plat 3', finished: false, pieces: 2,
+          },
+        ],
+        colorStatus: 1,
+      },
+      {
+        id: 15,
+        time: 'Fri May 20 2022 15:55:22 GMT+0200 (Central European Summer Time)',
+        iconName: 'md-bicycle',
+        mode: 'A livrer',
+        orderfinished: false,
+        urgent: false,
+        plats: [
+          {
+            id: 1, name: 'plat 1', finished: false, pieces: 4,
+          },
+        ],
+        colorStatus: 1,
+      },
+      {
+        id: 35,
+        time: 'Fri May 20 2022 15:55:22 GMT+0200 (Central European Summer Time)',
+        iconName: 'md-bicycle',
+        mode: 'A livrer',
+        orderfinished: false,
+        urgent: false,
+        plats: [
+          {
+            id: 1, name: 'plat 1', finished: false, pieces: 4,
+          },
         ],
         colorStatus: 1,
       },
