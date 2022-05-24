@@ -43,7 +43,7 @@ function Product(props: PropsProduit) {
 
   return (
     <Pressable
-      style={[{ borderWidth: 1, borderColor: 'black', padding: 5, margin: 10, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: props.finished ? 'grey' : 'white' }]}
+      style={[{ borderWidth: 1, borderColor: 'black', margin: 5, padding: 10, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: props.finished ? 'grey' : 'white' }]}
       onPress={() => { checkfinished() }}
     >
       <Text
@@ -63,8 +63,7 @@ function Product(props: PropsProduit) {
 function CommandeSection(props:CommandeType) {
   const { form } = useSelector((state) => state.SettingReducer)
   return (
-    // <View style={{ flex: form === 2 ? 1 : (form === 1 ? 1 : undefined), backgroundColor: 'white' }}>
-    <View style={{ flex: (form === 2 || form === 1) ? 1 : undefined, backgroundColor: 'white' }}>
+    <View style={{ flex: (form === 2 || form === 1) ? 0.9 : undefined, backgroundColor: 'white' }}>
       <ScrollView>
         {props.order.plats.map((p, idx) => (
           <Product product={p} id={props.order.id} finished={p.finished} index={idx} order={props.order} key={`${ props.order.id },${ idx}`} />
@@ -82,14 +81,14 @@ function Commande({ data: order }) {
       <View style={[{ backgroundColor: order.colorStatus === 3 ? 'red' : (order.colorStatus === 2 ? 'orange' : 'green') }, styles.commande_head]}>
         <View style={styles.commande_head_container}>
           <View style={styles.commande_head_top}>
-            <Icon name="refresh" size={0.02 * WIDTH} />
+            <Icon name="refresh" size={0.015 * WIDTH} />
             <Text style={styles.commande_head_time}>{dayjs(order.time).format('HH:mm')}</Text>
             <View style={styles.commande_head_top_left}>
               <Icon name="md-timer" size={iconSmall} />
               <Text style={styles.font_small}>00:05:35</Text>
             </View>
             <Pressable onPress={() => dispatch(setUrgent({ orderId: order.id }))}>
-              <Icon name="notifications-outline" size={iconSmall * 2} color={order.urgent ? 'black' : 'white'} />
+              <Icon name="notifications-outline" size={iconSmall * 1.2} color={order.urgent ? 'black' : 'white'} />
             </Pressable>
           </View>
           <View style={styles.commande_head_bottom}>
@@ -121,7 +120,6 @@ function Commandes() {
   }
 
   useEffect(() => {
-    // const { orders } = useSelector((state) => state.ordersReducer)
     orders.forEach((order) => {
       if ((order.plats.filter((p) => !p.finished).length === 0)) {
         dispatch(addOrderHistory({ order }));
@@ -140,10 +138,10 @@ function Commandes() {
           colorStatus += 1;
           const timeOrder = (new Date(order.time)).getTime();
           const ecart = timeCurrent - timeOrder;
-          if (ecart > 1200000) { dispatch(setColorStatus({ orderId: order.id, updateColor: 3 })) }
+          if (ecart > 350000000) { dispatch(setColorStatus({ orderId: order.id, updateColor: 3 })) }
           else if (ecart > 600000) { dispatch(setColorStatus({ orderId: order.id, updateColor: 2 })) }
         }
-      }, 100000)
+      }, 1000)
     })
   }, [])
   const takeForm = () => {
@@ -258,13 +256,14 @@ const styles = StyleSheet.create({
     flex: 1,
     width: 230,
     minHeight: 280,
+    maxHeight: 500,
     margin: 0.003 * WIDTH,
     borderRadius: 20,
   },
   commandeForme4: {
     width: 230,
     minHeight: 100,
-    maxHeight: 600,
+    maxHeight: 500,
 
     // backgroundColor: 'white',
     margin: 0.003 * WIDTH,

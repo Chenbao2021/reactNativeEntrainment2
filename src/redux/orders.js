@@ -97,28 +97,28 @@ export const OrdersSlice = createSlice({
             id: 3, name: 'plat 3', finished: false, pieces: 2,
           },
           {
-            id: 11, name: 'plat 1', finished: false, pieces: 4,
+            id: 1, name: 'plat 1', finished: false, pieces: 4,
           }, {
-            id: 12, name: 'plat 2', finished: false, pieces: 1,
+            id: 2, name: 'plat 2', finished: false, pieces: 1,
           }, {
-            id: 13, name: 'plat 3', finished: false, pieces: 2,
+            id: 3, name: 'plat 3', finished: false, pieces: 2,
           },
           {
-            id: 21, name: 'plat 1', finished: false, pieces: 4,
+            id: 1, name: 'plat 1', finished: false, pieces: 4,
           }, {
-            id: 222, name: 'plat 2', finished: false, pieces: 1,
+            id: 2, name: 'plat 2', finished: false, pieces: 1,
           }, {
-            id: 432, name: 'plat 3', finished: false, pieces: 2,
+            id: 2, name: 'plat 3', finished: false, pieces: 2,
           }, {
-            id: 232, name: 'plat 3', finished: false, pieces: 2,
+            id: 3, name: 'plat 3', finished: false, pieces: 2,
           }, {
-            id: 132, name: 'plat 3', finished: false, pieces: 2,
+            id: 3, name: 'plat 3', finished: false, pieces: 2,
           }, {
-            id: 432, name: 'plat 3', finished: false, pieces: 2,
+            id: 3, name: 'plat 3', finished: false, pieces: 2,
           }, {
-            id: 532, name: 'plat 3', finished: false, pieces: 2,
+            id: 3, name: 'plat 3', finished: false, pieces: 2,
           }, {
-            id: 662, name: 'plat 3', finished: false, pieces: 2,
+            id: 3, name: 'plat 3', finished: false, pieces: 2,
           },
         ],
         colorStatus: 1,

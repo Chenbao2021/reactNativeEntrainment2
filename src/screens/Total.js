@@ -1,22 +1,39 @@
-import { View, Text, Pressable ,ScrollView } from 'react-native'
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { View, Text, ScrollView, StyleSheet } from 'react-native'
+import React from 'react'
+import { useSelector } from 'react-redux';
 // import { updatePlat } from '../redux/total';
-import { updatePlat } from '../redux/total'
-
 export default function Total(): React.FunctionComponent {
-	const { totals } = useSelector((state) => state.totalReducer)
-	return (
+  const { totals } = useSelector((state) => state.totalReducer)
+  return (
     <ScrollView>
-			{
-					totals.map((plats) => (
-						<View key={plats.id} style={{backgroundColor: 'yellow', marginVertical: 20, flexDirection:'row', padding:10, justifyContent:'space-between'}}>
-							<Text> {plats.name} </Text>
-							<Text> {plats.pieces} </Text>
-						</View>
-					) 
-					)
-			}
+      {
+        totals.map((plats) => (
+          <View key={plats.id} style={styles.container}>
+            <Text>
+              {' '}
+              {plats.name}
+              {' '}
+            </Text>
+            <Text>
+              {' '}
+              {plats.pieces}
+              {' '}
+            </Text>
+          </View>
+        ))
+      }
     </ScrollView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'yellow',
+    marginVertical: 5,
+    paddingVertical: 15,
+    flexDirection: 'row',
+    padding: 10,
+    justifyContent: 'space-between',
+    borderRadius: 30,
+  },
+})

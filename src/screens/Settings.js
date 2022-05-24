@@ -9,7 +9,7 @@ function Button(props) {
   return (
     <Pressable
       style={({ pressed }) => [styles.Pressable_container, { backgroundColor: pressed ? 'yellow' : 'white' }]}
-      onPress={() => { console.log(props.current , props.id), navigation.navigate('Home'); props.dispatch(props.feature(props.id)) }}
+      onPress={() => { navigation.navigate('Home'); props.dispatch(props.feature(props.id)) }}
     >
       <Text style={{ backgroundColor: props.current === props.id ? 'yellow' : undefined }}>{props.title}</Text>
     </Pressable>
