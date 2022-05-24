@@ -74,13 +74,15 @@ function Product(props: PropsProduit) {
 function CommandeSection(props:CommandeType) {
   return (
     <View style={section.commandeSection}>
-      <View style={section.titre}>
+      {/* <View style={section.titre}>
         <Icon name={props.iconName} style={{ marginRight: 8 }} />
         <Text>{props.titre}</Text>
-      </View>
-      {props.order.plats.map((p, idx) => (
-        <Product product={p} id={props.order.id} finished={p.finished} index={idx} order={props.order} key={`${ props.order.id },${ idx}`} />
-      ))}
+      </View> */}
+      <ScrollView>
+        {props.order.plats.map((p, idx) => (
+          <Product product={p} id={props.order.id} finished={p.finished} index={idx} order={props.order} key={`${ props.order.id },${ idx}`} />
+        ))}
+      </ScrollView>
     </View>
   );
 }
@@ -127,7 +129,8 @@ function Commandes() {
   const { orders } = useSelector((state) => state.ordersReducer)
   const dispatch = useDispatch();
 
-  const [t, setT] = useState(false);
+  const { form } = useSelector((state) => state.SettingReducer)
+
   const handleScroll = async () => {
     dispatch(setCC(Math.trunc((xTotal - xPosition) / 220 - 4)))
   }
@@ -139,7 +142,6 @@ function Commandes() {
         dispatch(addOrderHistory({ order }));
         dispatch(deleteOrder({ orderId: order.id }));
       }
-      
     })
     handleScroll();
     // const time = dayjs(orders[0].time).format('HH:mm');
@@ -164,6 +166,11 @@ function Commandes() {
       }, 3000)
     })
   }, [])
+  const takeForm = () => {
+    if (form === 1) return styles.commandes1;
+    else if (form === 2) return styles.commandes2;
+    else if (form === 3) return styles.commandes3;
+  }
   return (
     <ScrollView onContentSizeChange={(width,) => { 
         setXTotal(width), 
@@ -174,7 +181,8 @@ function Commandes() {
         onMomentumScrollEnd={(even) => handleScroll(even)}
         >
         <Text>{orders[0].colorStatus}</Text>
-      <View style={styles.commandes}>
+      {/* <View style={form === 1 ? styles.commandes1 : styles.commandes2}> */}
+      <View style={takeForm()}>
         {orders.map((p, idx) => (
             p.urgent === true ?
             <Commande data={p} commande_index={idx} key={Math.random()} />
@@ -203,8 +211,8 @@ function Historique() {
     })
   })
   return (
-    <ScrollView horizontal>
-      <View style={styles.commandes}>
+    <ScrollView>
+      <View style={styles.commandes2}>
         {orders.map((p, idx) => (
           <Commande data={p} commande_index={idx} key={idx} />
 
@@ -274,15 +282,26 @@ const styles = StyleSheet.create({
   commande: {
     flex: 1,
     width: 230,
+    minHeight: 250,
+    maxHeight: 600,
+
     backgroundColor: 'white',
-    margin: 0.01 * WIDTH,
+    margin: 0.003 * WIDTH,
     borderRadius: 20,
   },
   font_small: {
     fontSize: 0.01 * WIDTH,
     color: 'black',
   },
-  commandes: {
+  commandes2: {
+    flex: 1,
+    flexWrap: 'wrap',
+  },
+  commandes1: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  commandes3: {
     flex: 1,
     flexDirection: 'row',
   },

@@ -5,13 +5,17 @@ export const SettingSlice = createSlice({
   name: 'settingReducer',
   initialState: {
     backgroundColor: '#2f4f4f',
+    form: 2,
   },
   reducers: {
     setBackgroundColor: (state, action) => {
       state.backgroundColor = action.payload;
     },
+    setForm: (state, action) => {
+      state.form = action.payload;
+    }
   },
 });
 
-export const { setBackgroundColor } = SettingSlice.actions;
+export const { setBackgroundColor, setForm } = SettingSlice.actions;
 export const SettingRed = SettingSlice.reducer;

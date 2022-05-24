@@ -1,7 +1,7 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native'
 import React from 'react'
 import { useDispatch, } from 'react-redux';
-import { setBackgroundColor } from '../redux/setting';
+import { setBackgroundColor, setForm } from '../redux/setting';
 
 export default function Settings() {
   const dispatch = useDispatch();
@@ -39,25 +39,25 @@ export default function Settings() {
         <Text style={styles.text_container}>Emplacement :</Text>
         <Pressable
           style={({ pressed }) => [{ backgroundColor: pressed ? 'grey' : 'white' }, styles.Pressable_container]}
-          onPress={() => dispatch(setBackgroundColor('black'))}
+          onPress={() => dispatch(setForm(1))}
         >
           <Text>Form 1</Text>
         </Pressable>
         <Pressable
           style={({ pressed }) => [{ backgroundColor: pressed ? 'grey' : 'white' }, styles.Pressable_container]}
-          onPress={() => dispatch(setBackgroundColor('blue'))}
+          onPress={() => dispatch(setForm(2))}
         >
           <Text>Form 2</Text>
         </Pressable>
         <Pressable
           style={({ pressed }) => [{ backgroundColor: pressed ? 'grey' : 'white' }, styles.Pressable_container]}
-          onPress={() => dispatch(setBackgroundColor('yellow'))}
+          onPress={() => dispatch(setForm(3))}
         >
           <Text>Form 3</Text>
         </Pressable>
         <Pressable
           style={({ pressed }) => [{ backgroundColor: pressed ? 'grey' : 'white' }, styles.Pressable_container]}
-          onPress={() => dispatch(setBackgroundColor('#2f4f4f'))}
+          onPress={() => dispatch(setForm(4))}
         >
           <Text>Form 4</Text>
         </Pressable>
