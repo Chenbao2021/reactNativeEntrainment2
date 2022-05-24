@@ -20,7 +20,8 @@ import Foot from './src/components/Foot';
 import Middle from './src/components/Middle';
 import { WIDTH } from './src/styles/constants';
 
-import { store, persistor } from './src/store';
+// import { store, persistor } from './src/redux/store';
+import { store } from './src/redux/store';
 import Total from './src/screens/Total';
 // import Icon from 'react-native-ionicons';
 

@@ -106,19 +106,19 @@ export const OrdersSlice = createSlice({
           {
             id: 21, name: 'plat 1', finished: false, pieces: 4,
           }, {
-            id: 22, name: 'plat 2', finished: false, pieces: 1,
+            id: 222, name: 'plat 2', finished: false, pieces: 1,
           }, {
-            id: 32, name: 'plat 3', finished: false, pieces: 2,
+            id: 432, name: 'plat 3', finished: false, pieces: 2,
           }, {
-            id: 32, name: 'plat 3', finished: false, pieces: 2,
+            id: 232, name: 'plat 3', finished: false, pieces: 2,
           }, {
-            id: 32, name: 'plat 3', finished: false, pieces: 2,
+            id: 132, name: 'plat 3', finished: false, pieces: 2,
           }, {
-            id: 32, name: 'plat 3', finished: false, pieces: 2,
+            id: 432, name: 'plat 3', finished: false, pieces: 2,
           }, {
-            id: 32, name: 'plat 3', finished: false, pieces: 2,
+            id: 532, name: 'plat 3', finished: false, pieces: 2,
           }, {
-            id: 32, name: 'plat 3', finished: false, pieces: 2,
+            id: 662, name: 'plat 3', finished: false, pieces: 2,
           },
         ],
         colorStatus: 1,
@@ -152,7 +152,7 @@ export const OrdersSlice = createSlice({
         colorStatus: 1,
       },
       {
-        id: 35,
+        id: 351,
         time: 'Fri May 20 2022 15:55:22 GMT+0200 (Central European Summer Time)',
         iconName: 'md-bicycle',
         mode: 'A livrer',
@@ -166,7 +166,7 @@ export const OrdersSlice = createSlice({
         colorStatus: 1,
       },
       {
-        id: 35,
+        id: 353,
         time: 'Fri May 20 2022 15:55:22 GMT+0200 (Central European Summer Time)',
         iconName: 'md-bicycle',
         mode: 'A livrer',
@@ -180,7 +180,7 @@ export const OrdersSlice = createSlice({
         colorStatus: 1,
       },
       {
-        id: 35,
+        id: 354,
         time: 'Fri May 20 2022 15:55:22 GMT+0200 (Central European Summer Time)',
         iconName: 'md-bicycle',
         mode: 'A livrer',
@@ -194,7 +194,7 @@ export const OrdersSlice = createSlice({
         colorStatus: 1,
       },
       {
-        id: 6,
+        id: 6543,
         time: 'Fri May 20 2022 16:35:22 GMT+0200 (Central European Summer Time)',
         iconName: 'md-bicycle',
         mode: 'A livrer',
@@ -212,7 +212,7 @@ export const OrdersSlice = createSlice({
         colorStatus: 1,
       },
       {
-        id: 6,
+        id: 63535,
         time: 'Fri May 20 2022 16:35:22 GMT+0200 (Central European Summer Time)',
         iconName: 'md-bicycle',
         mode: 'A livrer',
@@ -230,7 +230,7 @@ export const OrdersSlice = createSlice({
         colorStatus: 1,
       },
       {
-        id: 6,
+        id: 6433,
         time: 'Fri May 20 2022 16:35:22 GMT+0200 (Central European Summer Time)',
         iconName: 'md-bicycle',
         mode: 'A livrer',
