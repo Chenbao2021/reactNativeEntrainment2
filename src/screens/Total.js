@@ -28,7 +28,7 @@ export default function Total(): React.FunctionComponent {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'yellow',
+    backgroundColor: 'white',
     marginVertical: 5,
     paddingVertical: 15,
     flexDirection: 'row',
