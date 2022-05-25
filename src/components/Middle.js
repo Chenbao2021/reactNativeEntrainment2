@@ -93,7 +93,7 @@ function Commande({ data: order }) {
           </View>
           <View style={styles.commande_head_bottom}>
             <View style={styles.commande_head_left_bottom}>
-              <Icon name={order.iconName} size={iconSmall} />
+              <Icon name={order.iconName} size={iconSmall * 0.5} />
               <Text style={styles.font_small}>{order.mode}</Text>
             </View>
             <Text style={styles.font_small}>id commande</Text>
@@ -181,6 +181,7 @@ function Commandes() {
 function Historique() {
   const dispatch = useDispatch();
   const { orders } = useSelector((state) => state.ordersStoryReducer)
+  const { form } = useSelector((state) => state.SettingReducer)
   useEffect(() => {
     orders.forEach((order) => {
       if ((order.plats.filter((p) => !p.finished).length !== 0)) {
@@ -189,12 +190,18 @@ function Historique() {
       }
     })
   })
+
+  const takeForm = () => {
+    if (form === 1) return styles.commandes1;
+    else if (form === 2) return styles.commandes2;
+    else if (form === 3) return styles.commandes3;
+    else if (form === 4) return styles.commandes4;
+  }
   return (
-    <ScrollView>
-      <View style={styles.commandes2}>
+    <ScrollView horizontal>
+      <View style={takeForm()}>
         {orders.map((p, idx) => (
           <Commande data={p} commande_index={idx} key={idx} />
-
         ))}
       </View>
 

@@ -141,7 +141,7 @@ export const OrdersSlice = createSlice({
         id: 35,
         time: 'Fri May 20 2022 15:55:22 GMT+0200 (Central European Summer Time)',
         iconName: 'md-bicycle',
-        mode: 'A livrer',
+        mode: 'Sur place',
         orderfinished: false,
         urgent: false,
         plats: [
