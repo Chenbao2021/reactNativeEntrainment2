@@ -85,7 +85,7 @@ function Commande({ data: order }) {
             <Text style={styles.commande_head_time}>{dayjs(order.time).format('HH:mm')}</Text>
             <View style={styles.commande_head_top_left}>
               <Icon name="md-timer" size={iconSmall} />
-              <Text style={styles.font_small}>00:05:35</Text>
+              <Text style={styles.font_small}>00:05:45</Text>
             </View>
             <Pressable onPress={() => dispatch(setUrgent({ orderId: order.id }))}>
               <Icon name="notifications-outline" size={iconSmall * 1.2} color={order.urgent ? 'black' : 'white'} />

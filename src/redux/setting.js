@@ -6,6 +6,7 @@ export const SettingSlice = createSlice({
   initialState: {
     backgroundColor: '#2f4f4f',
     form: 2,
+    ip: '8.8.8.8'
   },
   reducers: {
     setBackgroundColor: (state, action) => {
@@ -13,7 +14,7 @@ export const SettingSlice = createSlice({
     },
     setForm: (state, action) => {
       state.form = action.payload;
-    }
+    },
   },
 });
 
