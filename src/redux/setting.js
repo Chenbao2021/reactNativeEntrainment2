@@ -15,6 +15,9 @@ export const SettingSlice = createSlice({
     setForm: (state, action) => {
       state.form = action.payload;
     },
+    setIp: (state, action) => {
+      state.form = action.payload;
+    }
   },
 });
 
