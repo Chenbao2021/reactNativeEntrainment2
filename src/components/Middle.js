@@ -16,7 +16,7 @@ import { WIDTH } from '../styles/constants';
 // import { setCC } from '../redux/actions';
 import { setCC } from '../redux/action_reducers';
 import { setPlatFinished, deleteOrder, addOrder, setUrgent, setColorStatus } from '../redux/orders';
-import { addOrderHistory, setPlatNotFinished, deleteOrderStory } from '../redux/ordersStory';
+import { addOrderHistory, setPlatNotFinished, deleteOrderStory, deleteAllOrderStory } from '../redux/ordersStory';
 
 import type { OrderType, CommandeType } from '../flowType/flowTypeObject'
 
@@ -77,7 +77,7 @@ function Commande({ data: order }) {
   const dispatch = useDispatch();
   const { form } = useSelector((state) => state.SettingReducer)
   return (
-    <View style={[{ backgroundColor: form === 3 ? '#2f4f4f' : 'white', }, form === 4 ? styles.commandeForme4 : styles.commande]}>
+    <View style={[{ backgroundColor: form === 3 ? '#2f4f4f' : 'white', }, form === 4 ? styles.commandeForme4 : form === 2 ? styles.commandeForm2 : styles.commande]}>
       <View style={[{ backgroundColor: order.colorStatus === 3 ? 'red' : (order.colorStatus === 2 ? 'orange' : 'green') }, styles.commande_head]}>
         <View style={styles.commande_head_container}>
           <View style={styles.commande_head_top}>
@@ -193,21 +193,25 @@ function Historique() {
 
   const takeForm = () => {
     if (form === 1) return styles.commandes1;
-    else if (form === 2) return styles.commandes2;
+    else if (form === 2) return styles.commandes4;
     else if (form === 3) return styles.commandes3;
     else if (form === 4) return styles.commandes4;
+  }
+
+  const Effacer = () => {
+    dispatch(deleteAllOrderStory())
   }
   return (
     <View>
       <View style={{ display: 'flex', alignItems: 'center', margin: 2 }}>
-        <Pressable style={{ borderWidth: 1, borderColor: 'black', padding: 20, borderRadius: 20, borderBottomWidth: 10, borderRightWidth: 8, }}>
+        <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? 'red' : undefined, borderWidth: 1, borderColor: 'black', padding: 20, borderRadius: 20, borderBottomWidth: 10, borderRightWidth: 8, }]} onPress={() => Effacer()}>
           <Text style={{ fontSize: 25, }}> Effacer l'historique </Text>
         </Pressable>
       </View>
       <ScrollView horizontal>
         <View style={takeForm()}>
           {orders.map((p, idx) => (
-            <Commande data={p} commande_index={idx} key={idx} />
+            <Commande data={p} commande_index={idx} key={Math.random()} />
           ))}
         </View>
 
@@ -272,6 +276,13 @@ const styles = StyleSheet.create({
     width: 230,
     minHeight: 280,
     maxHeight: 500,
+    margin: 0.003 * WIDTH,
+    borderRadius: 20,
+  },
+  commandeForm2: {
+    width: 230,
+    minHeight: 350,
+    maxHeight: 600,
     margin: 0.003 * WIDTH,
     borderRadius: 20,
   },

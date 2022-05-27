@@ -20,8 +20,11 @@ export const OrdersStorySlice = createSlice({
       const orderIndex = (state.orders).findIndex((p) => p.id === action.payload.orderId)
       state.orders.splice(orderIndex, 1)
     },
+    deleteAllOrderStory: (state) => {
+      state.orders = []
+    }
   },
 });
 
-export const { addOrderHistory, setPlatNotFinished, deleteOrderStory } = OrdersStorySlice.actions;
+export const { addOrderHistory, setPlatNotFinished, deleteOrderStory, deleteAllOrderStory } = OrdersStorySlice.actions;
 export const OrdersStoryRed = OrdersStorySlice.reducer;
