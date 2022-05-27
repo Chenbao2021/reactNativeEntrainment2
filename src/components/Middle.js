@@ -63,7 +63,7 @@ function Product(props: PropsProduit) {
 function CommandeSection(props:CommandeType) {
   const { form } = useSelector((state) => state.SettingReducer)
   return (
-    <View style={{ flex: (form === 2 || form === 1) ? 0.9 : undefined, backgroundColor: 'white' }}>
+    <View style={{ flex: (form === 2 || form === 1) ? 0.9 : undefined, backgroundColor: 'white', marginBottom: 60 }}>
       <ScrollView>
         {props.order.plats.map((p, idx) => (
           <Product product={p} id={props.order.id} finished={p.finished} index={idx} order={props.order} key={`${ props.order.id },${ idx}`} />
@@ -198,14 +198,21 @@ function Historique() {
     else if (form === 4) return styles.commandes4;
   }
   return (
-    <ScrollView horizontal>
-      <View style={takeForm()}>
-        {orders.map((p, idx) => (
-          <Commande data={p} commande_index={idx} key={idx} />
-        ))}
+    <View>
+      <View style={{ display: 'flex', alignItems: 'center', margin: 2 }}>
+        <Pressable style={{ borderWidth: 1, borderColor: 'black', padding: 20, borderRadius: 20, borderBottomWidth: 10, borderRightWidth: 8, }}>
+          <Text style={{ fontSize: 25, }}> Effacer l'historique </Text>
+        </Pressable>
       </View>
+      <ScrollView horizontal>
+        <View style={takeForm()}>
+          {orders.map((p, idx) => (
+            <Commande data={p} commande_index={idx} key={idx} />
+          ))}
+        </View>
 
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -255,6 +262,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     minHeight: 60,
     maxHeight: 60,
+
   },
   commande_head_time: {
     fontSize: 0.02 * WIDTH,
@@ -270,10 +278,12 @@ const styles = StyleSheet.create({
   commandeForme4: {
     width: 230,
     minHeight: 100,
-    maxHeight: 500,
+    maxHeight: 600,
 
     // backgroundColor: 'white',
     margin: 0.003 * WIDTH,
+
+    // marginVertical: 20,
     borderRadius: 20,
   },
   font_small: {

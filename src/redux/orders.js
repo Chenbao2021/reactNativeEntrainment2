@@ -120,6 +120,24 @@ export const OrdersSlice = createSlice({
           }, {
             id: 3, name: 'plat 3', finished: false, pieces: 2,
           },
+          {
+            id: 3, name: 'plat 3', finished: false, pieces: 2,
+          }, {
+            id: 3, name: 'plat 3', finished: false, pieces: 2,
+          }, {
+            id: 3, name: 'plat 3', finished: false, pieces: 2,
+          }, {
+            id: 3, name: 'plat 3', finished: false, pieces: 2,
+          },
+          {
+            id: 3, name: 'plat 3', finished: false, pieces: 2,
+          }, {
+            id: 3, name: 'plat 3', finished: false, pieces: 2,
+          }, {
+            id: 3, name: 'plat 3', finished: false, pieces: 2,
+          }, {
+            id: 3, name: 'plat 3', finished: false, pieces: 2,
+          },
         ],
         colorStatus: 1,
       },
