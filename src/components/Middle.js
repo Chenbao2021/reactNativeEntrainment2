@@ -182,7 +182,9 @@ function Commandes() {
         ))}
         {orders.map((p, idx) => (
             p.urgent === false ?
-            <Commande data={p} commande_index={idx} key={idx} />
+            <View>
+              <Commande data={p} commande_index={idx} key={idx} />
+            </View>
             :<View key={idx}></View>
         ))}
       </View>
@@ -285,6 +287,7 @@ const styles = StyleSheet.create({
   commandes: {
     flex: 1,
     flexDirection: 'row',
+
   },
   middle_container: {
     flex: 1,

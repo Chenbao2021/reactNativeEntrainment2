@@ -25,7 +25,6 @@ const rootReducer = combineReducers({
   ordersStoryReducer: OrdersStoryRed,
   totalReducer: TotalRed,
 });
-
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store:Node = configureStore({
   reducer: persistedReducer,
